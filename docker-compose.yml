@@ -1,4 +1,4 @@
-version: '3.8'  # Updated to support start_period
+version: '3.8'  
 services:
   zookeeper:
     image: confluentinc/cp-zookeeper:7.4.0
@@ -117,7 +117,7 @@ services:
       - LOAD_EX=n
       - EXECUTOR=Sequential
       - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
-      - AIRFLOW_WEBSERVER_SECRET_KEY=4K9dUHl+wFgQC/lI9sBKM4YL0RueiFVWrH59/c2yHkRGxWOu+wbQBopV
+      - AIRFLOW_WEBSERVER_SECRET_KEY="insert your key here"
       - KAFKA_BOOTSTRAP_SERVERS=broker:29092
       - PG_HOST=postgres
     logging:
@@ -154,7 +154,7 @@ services:
       - LOAD_EX=n
       - EXECUTOR=Sequential
       - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
-      - AIRFLOW_WEBSERVER_SECRET_KEY=4K9dUHl+wFgQC/lI9sBKM4YL0RueiFVWrH59/c2yHkRGxWOu+wbQBopV
+      - AIRFLOW_WEBSERVER_SECRET_KEY="insert your key here"
       - KAFKA_BOOTSTRAP_SERVERS=broker:29092
       - PG_HOST=postgres
       - AIRFLOW__SCHEDULER__SCHEDULER_HEARTBEAT_SEC=10
@@ -171,7 +171,7 @@ services:
       interval: 30s
       timeout: 30s
       retries: 5
-      start_period: 120s  # Line 174 in original
+      start_period: 120s  
     networks:
       - confluent
 
@@ -180,7 +180,7 @@ services:
     container_name: postgres
     environment:
       - POSTGRES_USER=airflow
-      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-airflow}
       - POSTGRES_DB=airflow
     logging:
       options:
@@ -197,7 +197,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-      start_period: 30s  # Line 200 in original
+      start_period: 30s  
 
   superset:
     image: apache/superset:latest
@@ -208,7 +208,7 @@ services:
     ports:
       - "8088:8088"
     environment:
-      - SUPERSET_SECRET_KEY=4K9dUHl+wFgQC/lI9sBKM4YL0RueiFVWrH59/c2yHkRGxWOu+wbQBopV
+      - SUPERSET_SECRET_KEY='insert your key"
     volumes:
       - ./superset:/app/superset_home
     command: >
@@ -226,7 +226,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
-      start_period: 60s  # Line 229 in original
+      start_period: 60s  
 
 networks:
   confluent:
