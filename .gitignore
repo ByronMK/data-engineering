@@ -1,0 +1,32 @@
+cat << 'EOF' > ~/DevProjects/data-engineering/.gitignore
+# Virtual environments
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Airflow
+airflow.db
+airflow-webserver.pid
+logs/
+
+# Docker
+*.log
+*.pid
+
+# IDE files
+.idea/
+# *.iml
+scratches/
+console/
+External Libraries/
+
+# Misc
+*.swp
+*.swo
+.DS_Store
+EOF
