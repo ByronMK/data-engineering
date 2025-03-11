@@ -10,7 +10,7 @@ until pg_isready -h postgres -p 5432 -U airflow; do
 done
 echo "PostgreSQL is ready at $(date)"
 
-# Initialize the database if not already done
+# Initializing the DB
 if [ ! -f "/opt/airflow/airflow.db" ]; then
   echo "Initializing Airflow database at $(date)..."
   airflow db init || { echo "airflow db init failed at $(date)"; exit 1; }
