@@ -13,5 +13,4 @@ A real-time data pipeline that streams user data, clusters users, and predicts e
 ## Setup
 1. Clone the repo:
    ```bash
-   git clone https://github.com/yourusername/data-engineering.git
-   cd data-engineering
+   git clone https://github.com/ByronMK/data-engineering.git
