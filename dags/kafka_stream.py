@@ -2,8 +2,8 @@ import logging
 from datetime import datetime, timedelta
 import psycopg2
 import pandas as pd
-from sklearn.cluster import KMeans  # Corrected back to sklearn
-from sklearn.linear_model import LogisticRegression  # Corrected back to sklearn
+from sklearn.cluster import KMeans  
+from sklearn.linear_model import LogisticRegression  
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 
